@@ -11,7 +11,7 @@
   </div>
   <select id="ontime_method">
     <option {% if ontime.mode == 'ontime' %} selected="selected" {% endif %} value="ontime">定时</option>
-    <option {% if ontime.mode == 'cron' %} selected="selected" {% endif %} value="cron">cron</option>
+    <option {% if ontime.mode == 'cron' %} selected="selected" {% endif %} value="cron">Cron</option>
   </select>
   <div id='ontime_content' {% if ontime.mode == 'ontime' %} style="display: block;" {% else %} style="display: none;" {% endif %}>
     <input id="ontime_run_date" type="date" min="{{today_date}}" value="{{today_date}}">
@@ -28,6 +28,9 @@
     </div>
   </div>
   <div id='cron_content' {% if ontime.mode == 'cron' %} style="display: block;" {% else %} style="display: none;" {% endif %}>
+    <div name="randzone readme">
+      <label class="control-label"><a href="https://tool.lu/crontab/" target="_blank" style="color: #064677;font-weight: bold;">表达式使用方法</a></label>
+    </div>
     <input type="text" class="form-control" id="cron_val" name="cron_val" {% if ontime.mode == 'cron'%} value="{{ontime.cron_val}}" {% endif %} id="cron_val" placeholder="仅支持5位标准 cron格式" >
     <label class="control-label">精确到秒：</label>
     <input type="number" id="cron_sec" name="cron_sec" value="{{ ontime.cron_sec }}" class="modal_input" min="0" max="59"/>
